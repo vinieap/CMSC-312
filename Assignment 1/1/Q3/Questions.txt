@@ -1,0 +1,15 @@
+Vinit Patel :
+-------------
+a) Discuss and evaluate what happens when you're running both in separate
+windows and you kill one or the other.
+    - When you kill spock first, kirk keeps running and buffers the messages so they will be recieved and printed by spock when run again.
+    If you kill kirk first then it will also kill spock because of an invalid argument error.
+    You also cannot run spock first because there is no messenger to get messages from so it throws an error
+
+b) Discuss what happens (and why) when you run two copies of kirk.
+    - Everything works fine because the messages are queued so which ever ordered they are recieved is the order the messages will be printed.
+    The messages are printed in the order they are sent to the spock program.
+
+c) Discuss what happens (and why) when your run two copies of spock.
+    - The messages are recieved sequentially based on the order of the spock programs ran and they will each recieve 1 message in a cyclic order.
+    This is because the recievers are connecting to the sender via a queue so once they recieve a message they go back to the end of the queue and wait till they get to the front again.
